@@ -7,7 +7,7 @@ function CartPage() {
   return (
     <div className="cart-page">
       <h2>Your Shopping Cart</h2>
-      <NoticeSection message="" /> {/* Notice message can be fetched from Supabase later */}
+      <NoticeSection message="" />
       <Cart />
     </div>
   );

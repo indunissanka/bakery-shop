@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ProductCard from './ProductCard';
 import './ProductList.css';
 import NoticeSection from './NoticeSection';
-import { useSupabaseClient } from './SupabaseContext'; // Import useSupabaseClient
+import { useSupabaseClient } from './SupabaseContext';
 
 function ProductList() {
-  const [productsData, setProductsData] = useState([]);
-  const supabase = useSupabaseClient(); // Use Supabase client from context
+  const [productsData, setProductsData] = React.useState([]);
+  const supabase = useSupabaseClient();
 
-  useEffect(() => {
+  React.useEffect(() => {
     const fetchProducts = async () => {
       try {
         const { data, error } = await supabase
@@ -18,19 +18,21 @@ function ProductList() {
         if (error) {
           console.error("Error fetching products:", error);
         } else {
-          setProductsData(data);
+          setProductsData(data || []);
         }
       } catch (error) {
         console.error("Unexpected error fetching products:", error);
       }
     };
 
-    fetchProducts();
+    if (supabase) {
+      fetchProducts();
+    }
   }, [supabase]);
 
   return (
     <div className="product-list-container">
-      <NoticeSection message="" /> {/* Notice message can be fetched from Supabase later */}
+      <NoticeSection message="" />
       <div className="product-list">
         {productsData.map(product => (
           <ProductCard key={product.id} product={product} />

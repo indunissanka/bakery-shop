@@ -1,52 +1,38 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './UserLoginPage.css';
+import { useSupabaseClient } from './SupabaseContext';
 
 function UserLoginPage() {
-  const [email, setEmail] = useState('');
-  const [tel, setTel] = useState('');
-  const [address, setAddress] = useState('');
+  const supabase = useSupabaseClient();
 
-  const handleLogin = () => {
-    alert('Login initiated!\n\nEmail: ' + email + '\nTelephone: ' + tel + '\nAddress: ' + address);
+  const handleGoogleSignIn = async () => {
+    if (!supabase) {
+      console.error("Supabase client is not initialized.");
+      return;
+    }
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+      });
+
+      if (error) {
+        console.error("Error signing in with Google:", error.message);
+        alert("Error signing in with Google: " + error.message);
+      }
+      // After successful sign-in, Supabase will handle redirecting back to your app
+    } catch (error) {
+      console.error("Unexpected error during Google sign-in:", error);
+      alert("Unexpected error during Google sign-in.");
+    }
   };
 
   return (
     <div className="user-login-page">
       <h2>User Login</h2>
       <div className="user-login-form">
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Your Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="user-login-input"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="tel">Telephone:</label>
-          <input
-            type="tel"
-            id="tel"
-            placeholder="Your Telephone Number"
-            value={tel}
-            onChange={(e) => setTel(e.target.value)}
-            className="user-login-input"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="address">Address:</label>
-          <textarea
-            id="address"
-            placeholder="Your Address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            className="user-login-input"
-          />
-        </div>
-        <button onClick={handleLogin} className="user-login-button">Login</button>
+        <button onClick={handleGoogleSignIn} className="google-login-button">
+          Sign in with Google
+        </button>
       </div>
     </div>
   );

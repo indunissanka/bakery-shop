@@ -5,12 +5,12 @@ import CartPage from './components/CartPage';
 import AdminPage from './components/AdminPage';
 import CheckoutPage from './components/CheckoutPage';
 import UserLoginPage from './components/UserLoginPage';
-import { SupabaseProvider, useSupabaseClient } from './components/SupabaseContext'; // Import SupabaseProvider
+import { SupabaseProvider } from './components/SupabaseContext';
 import './App.css';
 
 function App() {
   return (
-    <SupabaseProvider> {/* Wrap your app with SupabaseProvider */}
+    <SupabaseProvider>
       <div className="app">
         <header className="app-header">
           <h1 className="header-title">Sweet Delights Bakery</h1>
