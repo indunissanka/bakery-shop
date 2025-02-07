@@ -1,0 +1,73 @@
+:root {
+  --primary-color: #347928;
+  --secondary-color: #FFFFFF;
+  --accent-color: #FCCD2A;
+  --card-background: #FFFBE6;
+  --price-color: #FCCD2A;
+  --text-color-dark: #333333;
+  --text-color-light: #555555;
+  --border-color: #e0e0e0;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --notice-background: #ffe0b2;
+  --notice-text-color: #333;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--secondary-color);
+  color: var(--text-color-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+  color: var(--primary-color);
+  font-weight: 700;
+  margin-bottom: 0.7em;
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: 2.8em;
+}
+
+h2 {
+  font-size: 2.2em;
+}
+
+h3 {
+  font-size: 1.6em;
+  color: var(--text-color-dark);
+}
+
+p {
+  line-height: 1.6;
+  color: var(--text-color-light);
+}
+
+@media (max-width: 768px) {
+  #root {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 2.3em;
+  }
+
+  h2 {
+    font-size: 1.9em;
+  }
+
+  h3 {
+    font-size: 1.4em;
+  }
+}

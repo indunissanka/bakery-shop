@@ -1,0 +1,9 @@
+.notice-section {
+  background-color: var(--notice-background);
+  color: var(--notice-text-color);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 500;
+}

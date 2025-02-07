@@ -1,0 +1,8 @@
+.cart-component {
+  /* Styles for Cart component itself */
+}
+
+.cart-component p {
+  font-size: 1.1em;
+  color: var(--text-color-dark);
+}
